@@ -1,3 +1,4 @@
+//p5 setup functionality 
 // function setup() {
 //   createCanvas(400, 400);
 // }
@@ -5,34 +6,28 @@
 // function draw() {
 //   background(220);
 // }
+
+  //Need this to make sure dom is loaded so svg is accessible with javaScript
+document.addEventListener("DOMContentLoaded", function(event) {
+//to see all the gsap available object methods
+console.log(gsap);
+
+//takes care of some weird error messages in console
   gsap.config({
     nullTargetWarn: false,
     trialWarn: false,
 });
+
+//adds the Scroll Trigger plugin so we can use it's functionality
 gsap.registerPlugin(ScrollTrigger);
 
-let circle = document.querySelector(".circle");
+//accessing our svg element and storing it as a variable
+let circle = document.querySelector("#svg #circle")
 
-// const main = gsap.timeline({defaults: {duration: 1},
-//   scrollTrigger: {
-//     trigger: "#circle",
-//     scrub: true,
-//     start: "top center",
-//     end: "bottom center"
-//   }})
-//     .fromTo( ".circle",{ x: -40, fill: 'blue', }, { x: 40, fill: 'green' });
-  // .to(".circle", {duration: 0.01, autoAlpha: 1})
-  // .from(".theLine", {drawSVG: 0}, 0)
-  // .to(".circle", {motionPath: {
-  //   path: ".theLine", 
-  //   align:".theLine",
-  //   alignOrigin: [0.5, 0.5],
-  // }}, 0);
-  // .add(pulses, 0);
-
+//animate svg to move as we scroll down - rough wip
   const tl = gsap.timeline({
     scrollTrigger: {
-      trigger: "#circle",
+      trigger: "#svg",
       start: "top top",
       end: "+=1000",
       scrub: 1,
@@ -40,27 +35,9 @@ let circle = document.querySelector(".circle");
       markers: true
     }
   });
-  tl.to(circle, {yPercent: 350, duration: 1})
-  tl.to(circle, {rotation: 360, duration: 3})
-  tl.to(circle, {xPercent: 350, duration: 1})
+  tl.set(circle, {y: 0,})
+  tl.to(circle, {y: 500, duration: 1})
 
-//   gsap.config({
-//     nullTargetWarn: false,
-//     trialWarn: false,
-// });
-// gsap.registerPlugin(ScrollTrigger);
-
-// gsap.to(".circle", {
-//     duration: 1,
-//     stagger: true,
-//     x: -350,
-//     opacity: 1,
-//     stagger: 0.33,
-//     ease: "linear.none",
-//     scrollTrigger: {
-//         trigger: ".circle",
-//         toggleActions: "restart none none reverse",
-//         start: "top 95%",
-//         end: "bottom 95%"
-//     }
-// });
+// loggin our circle to make sure it's loaded
+console.log(circle);
+});
