@@ -25,18 +25,18 @@ gsap.registerPlugin(ScrollTrigger);
 let circle = document.querySelector("#svg #circle")
 
 //animate svg to move as we scroll down - rough wip
-  const tl = gsap.timeline({
+  const tl = gsap.timeline({defaults: {duration: 1},
     scrollTrigger: {
       trigger: "#svg",
       start: "top top",
       end: "+=1000",
-      scrub: 1,
+      scrub: true,
       pin: true,
       markers: true
     }
   });
-  tl.set(circle, {y: 0,})
-  tl.to(circle, {y: 500, duration: 1})
+  tl.set(circle, {x: 10, y: 0})
+  tl.to(circle, {x: 1000, y: 900})
 
 // loggin our circle to make sure it's loaded
 console.log(circle);

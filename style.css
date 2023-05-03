@@ -10,7 +10,6 @@ canvas {
 body {
 	height: 400vh;
   background: black;
-  color: white;
 }
 
 #svg {
@@ -18,8 +17,7 @@ body {
   top: 10vh;
   left: 0;
   width: 100vw;
-  height: 80vh;
-  background-color: lightgray;
+  height: 90vh;
   padding: 10px;
 }
 
